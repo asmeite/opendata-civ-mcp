@@ -201,9 +201,46 @@ def get_response(history: list, user_message: str) -> str:
     return "Désolé, je n'ai pas pu terminer l'analyse. Veuillez reformuler votre question."
 
 
+APP_PASSWORD = os.environ.get("APP_PASSWORD", "")
+
+
+def check_password() -> bool:
+    if st.session_state.get("authenticated"):
+        return True
+
+    st.markdown("""
+    <div style="display:flex;height:4px;width:100%;">
+        <div style="flex:1;background:#006B3C;"></div>
+        <div style="flex:1;background:#E8EAED;"></div>
+        <div style="flex:1;background:#D4600A;"></div>
+    </div>
+    <div style="padding:32px 0 24px 0;border-bottom:1px solid #EBEBEB;margin-bottom:32px;">
+        <div style="font-size:18px;font-weight:700;color:#111827;margin-bottom:4px;">
+            Données Publiques — Côte d'Ivoire
+        </div>
+        <div style="font-size:13px;color:#6B7280;">Accès restreint</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    pwd = st.text_input("Mot de passe", type="password", placeholder="Entrez le mot de passe d'accès")
+
+    if st.button("Accéder", type="primary"):
+        if pwd == APP_PASSWORD:
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.markdown(
+                "<div style='background:#FEF2F2;border:1px solid #FECACA;border-left:3px solid #DC2626;"
+                "border-radius:6px;padding:10px 14px;color:#991B1B;font-size:13px;margin-top:8px;'>"
+                "Mot de passe incorrect.</div>",
+                unsafe_allow_html=True,
+            )
+    return False
+
+
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Données Publiques :  Côte d'Ivoire",
+    page_title="Données Publiques — Côte d'Ivoire",
     layout="centered",
     initial_sidebar_state="collapsed",
 )
@@ -295,6 +332,9 @@ div[data-testid="stButton"] button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
+
+if not check_password():
+    st.stop()
 
 # ── Header ───────────────────────────────────────────────────────────────────
 st.markdown("""
