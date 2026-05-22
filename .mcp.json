@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "opendata-civ-mcp": {
+      "command": "python",
+      "args": ["-m", "src.server"],
+      "cwd": "c:\\Users\\smeit\\Desktop\\opendata-civ-mcp"
+    }
+  }
+}

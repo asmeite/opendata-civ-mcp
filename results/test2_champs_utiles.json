@@ -1,0 +1,181 @@
+[
+  {
+    "slug": "statistiques-de-lenseignement-secondaire-entre-2008-et-2018",
+    "title": "Statistiques de l'enseignement Secondaire entre 2008 et 2024",
+    "description": "Ce tableau statistique présente l'évolution des indicateurs du système éducatif sur une période s'étendant de 2008 à 2024, en distinguant les établissements publics des établissements privés.\nLe datas",
+    "count": 36,
+    "origin": "Ministère de l'éducation nationale ",
+    "topics": [
+      "Education"
+    ],
+    "schema": [
+      {
+        "key": "annee",
+        "type": "string"
+      },
+      {
+        "key": "statut",
+        "type": "string"
+      },
+      {
+        "key": "etablissement",
+        "type": "integer"
+      },
+      {
+        "key": "groupes_pedagogiques_total",
+        "type": "integer"
+      },
+      {
+        "key": "eleves_total",
+        "type": "integer"
+      },
+      {
+        "key": "eleves_filles",
+        "type": "integer"
+      },
+      {
+        "key": "percent_filles",
+        "type": "number"
+      },
+      {
+        "key": "redoublants_total",
+        "type": "integer"
+      },
+      {
+        "key": "redoublants_filles",
+        "type": "integer"
+      },
+      {
+        "key": "enseignants_total",
+        "type": "integer"
+      },
+      {
+        "key": "enseignants_femmes",
+        "type": "integer"
+      }
+    ],
+    "href": "https://data.gouv.ci/data-fair/api/v1/datasets/statistiques-de-lenseignement-secondaire-entre-2008-et-2018"
+  },
+  {
+    "slug": "statistiques-de-lenseignement-primaire-entre-2008-et-2025",
+    "title": "Statistiques de l'enseignement primaire entre 2010 et 2025",
+    "description": "Ce tableau présente une analyse statistique détaillée de l'évolution du système éducatif marquée par une expansion massive des capacités stucturelles sur une période allant de 2010 à 2025 segmentée en",
+    "count": 52,
+    "origin": "Ministère de l'éducation nationale ",
+    "topics": [
+      "Education"
+    ],
+    "schema": [
+      {
+        "key": "annee_scolaire",
+        "type": "string"
+      },
+      {
+        "key": "statut",
+        "type": "string"
+      },
+      {
+        "key": "ecoles",
+        "type": "integer"
+      },
+      {
+        "key": "salles_de_classe",
+        "type": "integer"
+      },
+      {
+        "key": "groupes_pedagogiques",
+        "type": "integer"
+      },
+      {
+        "key": "eleves_total",
+        "type": "integer"
+      },
+      {
+        "key": "eleves_filles",
+        "type": "integer"
+      },
+      {
+        "key": "percent_femmes",
+        "type": "number"
+      },
+      {
+        "key": "redoublants_total",
+        "type": "integer"
+      },
+      {
+        "key": "percent_redoublants",
+        "type": "number"
+      },
+      {
+        "key": "redoublants_filles",
+        "type": "integer"
+      },
+      {
+        "key": "enseignants_total",
+        "type": "integer"
+      },
+      {
+        "key": "enseignants_femmes",
+        "type": "integer"
+      },
+      {
+        "key": "ratio_eleveenseignant",
+        "type": "number"
+      }
+    ],
+    "href": "https://data.gouv.ci/data-fair/api/v1/datasets/statistiques-de-lenseignement-primaire-entre-2008-et-2025"
+  },
+  {
+    "slug": "statistiques-du-prescolaire-entre-2008-et-2025",
+    "title": "Statistiques de l'enseignement Préscolaire entre 2008 et 2025",
+    "description": "Ce dataset présente l’évolution des statistiques de l’enseignement préscolaire en Côte d'Ivoire entre 2008 et 2025 selon plusieurs indicateurs : le statut des établissements (public, privé et communau",
+    "count": 52,
+    "origin": "Ministère de l'éducation nationale ",
+    "topics": [
+      "Education"
+    ],
+    "schema": [
+      {
+        "key": "annee_scolaire",
+        "type": "string"
+      },
+      {
+        "key": "statut",
+        "type": "string"
+      },
+      {
+        "key": "ecoles",
+        "type": "integer"
+      },
+      {
+        "key": "salles_de_classe",
+        "type": "integer"
+      },
+      {
+        "key": "groupes_pedagogiques",
+        "type": "integer"
+      },
+      {
+        "key": "eleves_total",
+        "type": "integer"
+      },
+      {
+        "key": "eleves_filles",
+        "type": "integer"
+      },
+      {
+        "key": "percent_filles",
+        "type": "number"
+      },
+      {
+        "key": "enseignants_total",
+        "type": "integer"
+      },
+      {
+        "key": "enseignants_femmes",
+        "type": "integer"
+      }
+    ],
+    "href": "https://data.gouv.ci/data-fair/api/v1/datasets/statistiques-du-prescolaire-entre-2008-et-2025"
+  }
+]

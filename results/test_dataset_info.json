@@ -1,0 +1,379 @@
+{
+  "owner": {
+    "type": "organization",
+    "id": "HAbYP_-xC",
+    "name": "data354-CI",
+    "role": null
+  },
+  "updatedAt": "2025-08-19T15:19:36.500Z",
+  "createdAt": "2021-05-06T09:03:50.886Z",
+  "updatedBy": {
+    "id": "jZll-2qYVScbV5RQ5wUja",
+    "name": null
+  },
+  "createdBy": {
+    "id": "X0JBSgQdv",
+    "name": "Tech"
+  },
+  "schema": [
+    {
+      "key": "ANNEE",
+      "x-originalName": "ANNEE",
+      "type": "string",
+      "format": "uri-reference",
+      "x-cardinality": 1,
+      "enum": [
+        "2007-2008"
+      ],
+      "x-capabilities": {
+        "textAgg": true
+      },
+      "description": ""
+    },
+    {
+      "key": "DREN",
+      "x-originalName": "DREN",
+      "type": "string",
+      "x-cardinality": 17,
+      "enum": [
+        "Abengourou",
+        "Abidjan 1",
+        "Abidjan 2",
+        "Aboisso",
+        "Agboville",
+        "Bondoukou",
+        "Bouaké",
+        "Daloa",
+        "Dimbokro",
+        "Divo",
+        "Gagnoa",
+        "Guiglo",
+        "Korhogo",
+        "Man",
+        "Odiénné",
+        "San-Pédro",
+        "Yamoussoukro"
+      ],
+      "x-capabilities": {
+        "textAgg": true
+      },
+      "description": ""
+    },
+    {
+      "key": "Cl__Péd_",
+      "x-originalName": "Cl. Péd.",
+      "type": "integer",
+      "x-cardinality": 49,
+      "enum": [
+        368,
+        386,
+        224,
+        242,
+        255,
+        275,
+        276,
+        282,
+        285,
+        290,
+        307,
+        309,
+        324,
+        338,
+        363,
+        382,
+        387,
+        392,
+        395,
+        398,
+        411,
+        418,
+        423,
+        434,
+        439,
+        496,
+        501,
+        524,
+        551,
+        555,
+        568,
+        573,
+        599,
+        608,
+        623,
+        682,
+        706,
+        726,
+        795,
+        816,
+        833,
+        891,
+        929,
+        947,
+        996,
+        1011,
+        1017,
+        1045,
+        1056
+      ],
+      "description": ""
+    },
+    {
+      "key": "CLASSE",
+      "x-originalName": "CLASSE",
+      "type": "string",
+      "format": "uri-reference",
+      "x-cardinality": 6,
+      "enum": [
+        "CE1",
+        "CE2",
+        "CM1",
+        "CM2",
+        "CP1",
+        "CP2"
+      ],
+      "x-capabilities": {
+        "textAgg": true
+      },
+      "description": ""
+    },
+    {
+      "key": "SEXE",
+      "x-originalName": "SEXE",
+      "type": "string",
+      "format": "uri-reference",
+      "x-cardinality": 2,
+      "enum": [
+        "FILLE",
+        "GARÇON"
+      ],
+      "x-capabilities": {
+        "textAgg": true
+      },
+      "description": ""
+    },
+    {
+      "key": "STATUT",
+      "x-originalName": "STATUT",
+      "type": "string",
+      "x-cardinality": 2,
+      "enum": [
+        "NON REDOUBLANT",
+        "REDOUBLANT"
+      ],
+      "x-capabilities": {
+        "textAgg": true
+      },
+      "description": ""
+    },
+    {
+      "key": "EFFECTIF",
+      "x-originalName": "EFFECTIF",
+      "type": "integer",
+      "x-cardinality": 400,
+      "description": ""
+    },
+    {
+      "x-calculated": true,
+      "key": "_id",
+      "type": "string",
+      "format": "uri-reference",
+      "title": "Identifiant",
+      "description": "Identifiant unique parmi toutes les lignes du jeu de données"
+    },
+    {
+      "x-calculated": true,
+      "key": "_i",
+      "type": "integer",
+      "title": "Numéro de ligne",
+      "description": "Indice de la ligne dans le fichier d'origine"
+    },
+    {
+      "x-calculated": true,
+      "key": "_rand",
+      "type": "integer",
+      "title": "Nombre aléatoire",
+      "description": "Un nombre aléatoire associé à la ligne qui permet d'obtenir un tri aléatoire par exemple"
+    }
+  ],
+  "id": "synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008",
+  "title": "Effectif du primaire public et privé par DREN et par classe en 2007-2008",
+  "originalFile": {
+    "name": "Synthèse du primaire public et privé par DREN et par classe 2007-2008.xlsx",
+    "size": 27715,
+    "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  },
+  "status": "finalized",
+  "storage": {
+    "size": 48911,
+    "dataFiles": [
+      {
+        "name": "Synthèse du primaire public et privé par DREN et par classe 2007-2008.xlsx",
+        "key": "original",
+        "title": "Fichier original",
+        "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 27715,
+        "updatedAt": "2021-05-06T09:03:50.883Z"
+      },
+      {
+        "name": "Synthèse du primaire public et privé par DREN et par classe 2007-2008.csv",
+        "key": "normalized",
+        "title": "Fichier normalisé (csv)",
+        "mimetype": "text/csv",
+        "size": 21196,
+        "updatedAt": "2021-05-06T09:03:52.879Z"
+      }
+    ],
+    "indexed": {
+      "size": 21196,
+      "parts": [
+        "normalized-file"
+      ]
+    },
+    "attachments": {
+      "size": 0,
+      "count": 0
+    },
+    "metadataAttachments": {
+      "size": 0,
+      "count": 0
+    }
+  },
+  "file": {
+    "name": "Synthèse du primaire public et privé par DREN et par classe 2007-2008.csv",
+    "size": null,
+    "mimetype": "text/csv",
+    "encoding": "utf-8",
+    "props": {
+      "linesDelimiter": "\n",
+      "fieldsDelimiter": ",",
+      "escapeChar": "\"",
+      "quote": "\"",
+      "numLines": 408
+    },
+    "schema": [
+      {
+        "key": "ANNEE",
+        "x-originalName": "ANNEE",
+        "type": "string",
+        "format": "uri-reference"
+      },
+      {
+        "key": "DREN",
+        "x-originalName": "DREN",
+        "type": "string"
+      },
+      {
+        "key": "Cl__Péd_",
+        "x-originalName": "Cl. Péd.",
+        "type": "integer"
+      },
+      {
+        "key": "CLASSE",
+        "x-originalName": "CLASSE",
+        "type": "string",
+        "format": "uri-reference"
+      },
+      {
+        "key": "SEXE",
+        "x-originalName": "SEXE",
+        "type": "string",
+        "format": "uri-reference"
+      },
+      {
+        "key": "STATUT",
+        "x-originalName": "STATUT",
+        "type": "string"
+      },
+      {
+        "key": "EFFECTIF",
+        "x-originalName": "EFFECTIF",
+        "type": "integer"
+      }
+    ]
+  },
+  "count": 408,
+  "bbox": null,
+  "finalizedAt": "2021-05-06T09:04:09.824Z",
+  "license": {
+    "title": "Licence Ouverte / Open Licence",
+    "href": "https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+  },
+  "topics": [
+    {
+      "title": "Education",
+      "color": "#D900FFFF",
+      "id": "IKyKtjuiRN"
+    }
+  ],
+  "origin": "Institut National de la Statistique - INS SODE",
+  "description": "\nLe jeu de données présente la synthèse du primaire public et privé par DREN et par classe pour l'année 2007-2008.",
+  "publicationSites": [
+    "data-fair-portals:yCWsyaGpA"
+  ],
+  "extras": {
+    "reuses": [
+      "synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008-graphiques",
+      "synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008-diagramme-de-sankey"
+    ],
+    "applications": [
+      {
+        "updatedAt": "2021-07-23T12:29:57.841Z",
+        "id": "synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008-graphiques",
+        "slug": "synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008-graphiques"
+      }
+    ]
+  },
+  "image": "https://media-files.abidjan.net/photo/Inauguration-Ecole-Magic-System-Seguela-0018.JPG",
+  "dataUpdatedAt": "2021-05-06T09:04:09.824Z",
+  "dataUpdatedBy": {
+    "id": "X0JBSgQdv",
+    "name": "Tech"
+  },
+  "analysis": {
+    "escapeKeyAlgorithm": "legacy"
+  },
+  "slug": "synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008",
+  "esWarning": null,
+  "userPermissions": [
+    "readDescription",
+    "readSchema",
+    "readSafeSchema",
+    "readLines",
+    "getGeoAgg",
+    "getValuesAgg",
+    "getValues",
+    "getMetricAgg",
+    "getSimpleMetricsAgg",
+    "getWordsAgg",
+    "getMinAgg",
+    "getMaxAgg",
+    "downloadOriginalData",
+    "downloadFullData",
+    "readApiDoc",
+    "realtime-transactions",
+    "readLine",
+    "readLineRevisions",
+    "readRevisions",
+    "bulkSearch",
+    "listDataFiles",
+    "downloadDataFile",
+    "downloadMetadataAttachment",
+    "downloadAttachment",
+    "getReadApiKey",
+    "readCompatODSRecords",
+    "readCompatODSExports",
+    "list"
+  ],
+  "public": true,
+  "visibility": "public",
+  "previews": [
+    {
+      "id": "table",
+      "title": "Tableau",
+      "href": "https://data.gouv.ci/data-fair/embed/dataset/synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008/table"
+    }
+  ],
+  "href": "https://data.gouv.ci/data-fair/api/v1/datasets/synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008",
+  "page": "https://data.gouv.ci/datasets/synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008",
+  "thumbnail": "https://data.gouv.ci/data-fair/api/v1/datasets/synthese-du-primaire-public-et-prive-par-dren-et-par-classe-2007-2008/thumbnail?width=300&height=200"
+}
