@@ -37,4 +37,5 @@ async def get_dataset_file(slug: str, format: str = "csv") -> dict:
         "filename": fichier.get("name") if fichier else None,
         "size_bytes": fichier.get("size") if fichier else None,
         "url": f"{BASE_URL}/datasets/{slug}/{key}",
+        "url_portail": f"https://data.gouv.ci/datasets/{slug}",
     }
