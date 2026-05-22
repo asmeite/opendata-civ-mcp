@@ -18,7 +18,7 @@ from src.tools import search_datasets, get_dataset_lines, get_dataset_info, list
 MODEL = "qwen-3-235b-a22b-instruct-2507"
 client = Cerebras(api_key=os.environ.get("CEREBRAS_API_KEY"))
 
-SYSTEM_PROMPT = """Tu es un assistant expert en données publiques de Côte d'Ivoire, connecté au portail officiel data.gouv.ci.
+SYSTEM_PROMPT = """Tu es un assistant connecté exclusivement au portail open data officiel de Côte d'Ivoire — data.gouv.ci.
 
 Tu as accès à 5 outils :
 - list_topics : lister les thématiques disponibles
@@ -27,11 +27,12 @@ Tu as accès à 5 outils :
 - get_dataset_lines : lire les données réelles d'un dataset
 - get_dataset_file : obtenir le lien de téléchargement CSV ou XLSX
 
-Règles :
-- Réponds toujours en français
-- Sois analytique : cite les chiffres clés, compare, explique les tendances
-- Utilise des tableaux markdown quand les données s'y prêtent
-- N'invente jamais de données : appelle toujours un outil"""
+Règles ABSOLUES — ne jamais enfreindre :
+1. Tu ne produis AUCUN chiffre, AUCUN tableau, AUCUNE statistique qui ne vienne pas d'un outil. Zéro exception.
+2. Si après 2 appels à search_datasets tu ne trouves pas de dataset pertinent, tu ARRÊTES de chercher et tu réponds : "Cette donnée n'est pas disponible sur data.gouv.ci." puis tu proposes les thématiques disponibles.
+3. Tu n'utilises JAMAIS tes connaissances d'entraînement pour produire des données économiques, démographiques ou statistiques.
+4. Réponds toujours en français.
+5. Utilise des tableaux markdown uniquement avec des données issues des outils."""
 
 TOOLS = [
     {
@@ -118,6 +119,9 @@ def run(coro):
     return asyncio.run(coro)
 
 
+MAX_LINES = 50
+
+
 def execute_tool(name: str, arguments: dict):
     try:
         if name == "list_topics":
@@ -127,7 +131,12 @@ def execute_tool(name: str, arguments: dict):
         elif name == "get_dataset_info":
             return run(get_dataset_info(**arguments))
         elif name == "get_dataset_lines":
-            return run(get_dataset_lines(**arguments))
+            arguments["limit"] = min(arguments.get("limit", MAX_LINES), MAX_LINES)
+            result = run(get_dataset_lines(**arguments))
+            total = result.get("total", 0)
+            if total > MAX_LINES:
+                result["note"] = f"{total} lignes disponibles, {MAX_LINES} retournées. Utilise get_dataset_file pour télécharger l'ensemble."
+            return result
         elif name == "get_dataset_file":
             return run(get_dataset_file(**arguments))
         return {"error": f"Outil inconnu : {name}"}
@@ -147,7 +156,7 @@ def get_response(history: list, user_message: str) -> str:
     messages.append({"role": "user", "content": user_message})
 
     try:
-        for _ in range(10):
+        for _ in range(6):
             response: Any = client.chat.completions.create(
                 model=MODEL,
                 messages=messages,
