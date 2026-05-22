@@ -17,7 +17,7 @@ Permet à tout agent IA de rechercher, analyser et télécharger les données pu
 
 ## Fonctionnalités
 
-- Exploration de 192 jeux de données publics
+- Exploration de 177 jeux de données publics
 - Recherche par mots-clés et thématiques
 - Lecture des données réelles avec filtres
 - Téléchargement direct en CSV ou XLSX
