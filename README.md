@@ -1,7 +1,7 @@
 ---
 title: Données Publiques Côte d'Ivoire
 emoji: 🟠
-colorFrom: orange
+colorFrom: yellow
 colorTo: green
 sdk: streamlit
 sdk_version: "1.45.0"
