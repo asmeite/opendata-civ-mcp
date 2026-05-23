@@ -59,5 +59,5 @@ Toutes les données proviennent du portail officiel [data.gouv.ci](https://data.
 
 ## Auteur
 
-**Aboubakar Sidik MEITE** — Ingénieur Data  
+**Aboubakar Sidik MEITE** — Ingénieur Data & IA  
 [smeite20@gmail.com](mailto:smeite20@gmail.com)
