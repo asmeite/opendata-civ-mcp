@@ -1,4 +1,7 @@
+from urllib.parse import quote
 from src.client.datagouv_client import get_dataset_info_api
+
+_API_BASE = "https://data.gouv.ci/data-fair/api/v1"
 
 
 async def get_dataset_info(slug: str) -> dict:
@@ -20,6 +23,8 @@ async def get_dataset_info(slug: str) -> dict:
         "count": data.get("count"),
         "origin": data.get("origin"),
         "url_portail": data.get("page"),
+        "download_csv": f"{_API_BASE}/datasets/{quote(data['slug'], safe='-_')}/full" if data.get("slug") else None,
+        "download_xlsx": f"{_API_BASE}/datasets/{quote(data['slug'], safe='-_')}/raw" if data.get("slug") else None,
         "updated_at": data.get("dataUpdatedAt"),
         "topics": [t.get("title") for t in data.get("topics", [])],
         "license": data.get("license", {}).get("title"),

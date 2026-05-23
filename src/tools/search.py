@@ -1,14 +1,21 @@
+from urllib.parse import quote
 from src.client.datagouv_client import search_datasets_api
+
+_API_BASE = "https://data.gouv.ci/data-fair/api/v1"
 
 
 def _format_dataset(ds: dict) -> dict:
+    slug = ds.get("slug")
+    slug_encoded = quote(slug, safe="-_") if slug else None
     return {
-        "slug": ds.get("slug"),
+        "slug": slug,
         "title": ds.get("title"),
         "description": ds.get("description", "")[:300],
         "count": ds.get("count"),
         "origin": ds.get("origin"),
         "url_portail": ds.get("page"),
+        "download_csv": f"{_API_BASE}/datasets/{slug_encoded}/full" if slug_encoded else None,
+        "download_xlsx": f"{_API_BASE}/datasets/{slug_encoded}/raw" if slug_encoded else None,
         "topics": [t.get("title") for t in ds.get("topics", [])],
         "schema": [
             {"key": col["key"], "type": col["type"]}

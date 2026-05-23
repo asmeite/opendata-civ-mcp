@@ -34,7 +34,13 @@ Règles ABSOLUES :
 3. Dès que tu as des données, rédige immédiatement ta réponse finale. Ne rappelle pas un outil si tu as déjà des données suffisantes.
 4. Si après 1 recherche tu ne trouves rien, réponds directement : "Cette donnée n'est pas disponible sur data.gouv.ci." et propose des alternatives.
 5. N'utilise JAMAIS tes connaissances d'entraînement pour produire des statistiques.
-6. Réponds toujours en français avec des tableaux markdown si pertinent."""
+6. Réponds TOUJOURS en français, de façon COURTE et DIRECTE :
+   - 2-4 phrases maximum pour répondre à la question
+   - Un petit tableau uniquement si c'est indispensable (5 lignes max)
+   - Aucun emoji, aucune liste à puces inutile, aucun titre en gras
+   - Toujours terminer par : [Nom du dataset](url_portail) — [Télécharger CSV](download_csv) en utilisant EXACTEMENT les valeurs des champs retournés par l'outil — jamais d'URL brute
+   - Zéro remplissage, zéro paraphrase, zéro conclusion rhétorique
+7. INTERDIT DE CONSTRUIRE DES URLs : utilise uniquement les champs url_portail et download_csv retournés par search_datasets, get_dataset_info ou get_dataset_file. N'invente JAMAIS une URL, même partielle."""
 
 TOOLS = [
     {
@@ -94,7 +100,7 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "get_dataset_file",
-            "description": "Retourne l'URL de téléchargement d'un dataset en CSV ou XLSX.",
+            "description": "Retourne l'URL de téléchargement d'un dataset en CSV ou XLSX. Doit TOUJOURS être appelé pour obtenir un lien de téléchargement — ne jamais construire l'URL manuellement.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -163,7 +169,7 @@ def get_response(history: list, user_message: str) -> str:
                 model=MODEL,
                 messages=messages,
                 tools=TOOLS,
-                max_tokens=4096,
+                max_tokens=16000,
                 temperature=0.3,
             )
             choice = response.choices[0]
@@ -195,7 +201,7 @@ def get_response(history: list, user_message: str) -> str:
         time.sleep(12)
         try:
             response: Any = client.chat.completions.create(
-                model=MODEL, messages=messages, tools=TOOLS, max_tokens=4096, temperature=0.3,
+                model=MODEL, messages=messages, tools=TOOLS, max_tokens=16000, temperature=0.3,
             )
             return response.choices[0].message.content or ""
         except Exception:
@@ -429,6 +435,8 @@ def handle_message(user_input: str):
         with st.spinner("Analyse en cours..."):
             try:
                 reply = get_response(st.session_state.messages[:-1], user_input)
+                if not reply or not reply.strip():
+                    reply = "Désolé, je n'ai pas pu générer une réponse. Veuillez reformuler votre question."
                 st.markdown(reply)
             except RuntimeError as e:
                 err = str(e)

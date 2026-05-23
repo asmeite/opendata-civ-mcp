@@ -1,3 +1,4 @@
+from urllib.parse import quote
 from src.client.datagouv_client import get_dataset_info_api
 
 BASE_URL = "https://data.gouv.ci/data-fair/api/v1"
@@ -36,6 +37,6 @@ async def get_dataset_file(slug: str, format: str = "csv") -> dict:
         "format": format,
         "filename": fichier.get("name") if fichier else None,
         "size_bytes": fichier.get("size") if fichier else None,
-        "url": f"{BASE_URL}/datasets/{slug}/{key}",
-        "url_portail": data.get("page") or f"https://data.gouv.ci/datasets/{slug}",
+        "url": f"{BASE_URL}/datasets/{quote(slug, safe='-_')}/{key}",
+        "url_portail": data.get("page") or f"https://data.gouv.ci/datasets/{quote(slug, safe='-_')}",
     }
