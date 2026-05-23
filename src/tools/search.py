@@ -8,6 +8,7 @@ def _format_dataset(ds: dict) -> dict:
         "description": ds.get("description", "")[:300],
         "count": ds.get("count"),
         "origin": ds.get("origin"),
+        "url_portail": ds.get("page"),
         "topics": [t.get("title") for t in ds.get("topics", [])],
         "schema": [
             {"key": col["key"], "type": col["type"]}

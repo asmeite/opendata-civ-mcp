@@ -19,6 +19,7 @@ async def get_dataset_info(slug: str) -> dict:
         "description": data.get("description", "").strip(),
         "count": data.get("count"),
         "origin": data.get("origin"),
+        "url_portail": data.get("page"),
         "updated_at": data.get("dataUpdatedAt"),
         "topics": [t.get("title") for t in data.get("topics", [])],
         "license": data.get("license", {}).get("title"),
