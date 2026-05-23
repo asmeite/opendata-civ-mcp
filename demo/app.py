@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import asyncio
+import time
 from typing import Any
 from dotenv import load_dotenv
 
@@ -27,12 +28,13 @@ Tu as accès à 5 outils :
 - get_dataset_lines : lire les données réelles d'un dataset
 - get_dataset_file : obtenir le lien de téléchargement CSV ou XLSX
 
-Règles ABSOLUES — ne jamais enfreindre :
-1. Tu ne produis AUCUN chiffre, AUCUN tableau, AUCUNE statistique qui ne vienne pas d'un outil. Zéro exception.
-2. Si après 2 appels à search_datasets tu ne trouves pas de dataset pertinent, tu ARRÊTES de chercher et tu réponds : "Cette donnée n'est pas disponible sur data.gouv.ci." puis tu proposes les thématiques disponibles.
-3. Tu n'utilises JAMAIS tes connaissances d'entraînement pour produire des données économiques, démographiques ou statistiques.
-4. Réponds toujours en français.
-5. Utilise des tableaux markdown uniquement avec des données issues des outils."""
+Règles ABSOLUES :
+1. Ne produis AUCUN chiffre, AUCUN tableau, AUCUNE statistique qui ne vienne pas d'un outil.
+2. Séquence maximale : search_datasets → get_dataset_lines → RÉPONDRE. Pas plus de 3 appels d'outils par question.
+3. Dès que tu as des données, rédige immédiatement ta réponse finale. Ne rappelle pas un outil si tu as déjà des données suffisantes.
+4. Si après 1 recherche tu ne trouves rien, réponds directement : "Cette donnée n'est pas disponible sur data.gouv.ci." et propose des alternatives.
+5. N'utilise JAMAIS tes connaissances d'entraînement pour produire des statistiques.
+6. Réponds toujours en français avec des tableaux markdown si pertinent."""
 
 TOOLS = [
     {
@@ -190,7 +192,14 @@ def get_response(history: list, user_message: str) -> str:
                 return choice.message.content or ""
 
     except RateLimitError:
-        raise RuntimeError("rate_limit")
+        time.sleep(12)
+        try:
+            response: Any = client.chat.completions.create(
+                model=MODEL, messages=messages, tools=TOOLS, max_tokens=4096, temperature=0.3,
+            )
+            return response.choices[0].message.content or ""
+        except Exception:
+            raise RuntimeError("rate_limit")
     except APIConnectionError:
         raise RuntimeError("connection")
     except APIStatusError as e:
